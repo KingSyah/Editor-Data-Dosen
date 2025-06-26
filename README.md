@@ -36,7 +36,7 @@ PROFIL-DOSEN-MTE/
 1. **Upload File JSONL**:
    ```
    Upload file `data-dosen.jsonl` ke:
-   https://mte.usk.ac.id/wp-content/uploads/data-dosen/data-dosen.jsonl
+   https://[wordpress-site]/wp-content/uploads/data-dosen/data-dosen.jsonl
    ```
 
 2. **Implementasi di WordPress**:
