@@ -23,15 +23,10 @@ Sistem manajemen profil dosen yang modern, responsif, dan user-friendly untuk Pr
 
 ```
 PROFIL-DOSEN-MTE/
-├── data-dosen.jsonl              # Data dosen dalam format JSONL
-├── wordpress-compact.html        # Template WordPress yang compact
-├── page-wordpress.html           # Template WordPress lengkap (backup)
 ├── index.html                    # Aplikasi editor JSONL
 ├── script.js                     # JavaScript untuk editor
 ├── README.md                     # Dokumentasi ini
-└── old-date/                     # File backup lama
-    ├── page-staff.php
-    └── INSTRUKSI-WORDPRESS.md
+
 ```
 
 ## 🚀 Cara Penggunaan
