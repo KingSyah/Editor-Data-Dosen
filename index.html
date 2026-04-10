@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editor Data Dosen MTE</title>
+<link rel="stylesheet" href="editor-dosen.css">
+</head>
+<body>
+
+<div class="app">
+    <div class="header">
+        <h1>📝 Editor Data Dosen MTE</h1>
+        <p>Tambah, edit, hapus data pengajar — lalu unduh file JSONL</p>
+    </div>
+
+    <div class="drop-zone" id="dropZone">
+        📁 <strong>Klik atau seret file .jsonl</strong> ke sini untuk memuat data
+        <input type="file" id="fileInput" accept=".jsonl,.json,.txt">
+    </div>
+
+    <div class="toolbar">
+        <button class="btn btn-primary" onclick="openModal()">＋ Tambah Dosen</button>
+        <button class="btn btn-success" onclick="downloadJSONL()">⬇ Unduh JSONL</button>
+        <button class="btn btn-outline" onclick="copyToClipboard()">📋 Salin JSONL</button>
+        <span class="spacer"></span>
+        <span class="counter" id="counter">0 data</span>
+        <input type="text" class="search-box" placeholder="Cari..." id="searchInput" oninput="renderTable()">
+    </div>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Foto</th>
+                    <th>Nama</th>
+                    <th>Gelar/Jabatan</th>
+                    <th>Kategori</th>
+                    <th>Bidang Riset</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+        <div class="modal-header">
+            <h2 id="modalTitle">Tambah Dosen</h2>
+            <button class="modal-close" onclick="closeModal()">✕</button>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" id="editIndex" value="-1">
+
+            <div class="form-group">
+                <label>Nama Lengkap</label>
+                <input type="text" id="fName" placeholder="Prof. Dr. Ir. Nama, S.T., M.Eng.">
+            </div>
+
+            <div class="form-group">
+                <label>Jabatan / Gelar Singkat</label>
+                <input type="text" id="fTitle" placeholder="Profesor / Doktor">
+            </div>
+
+            <div class="form-group">
+                <label>ID (slug)</label>
+                <input type="text" id="fId" placeholder="nama-slug">
+                <div class="form-hint">Digunakan sebagai identifier unik. Otomatis dari nama jika kosong.</div>
+            </div>
+
+            <div class="form-group">
+                <label>URL Foto</label>
+                <input type="text" id="fPhoto" placeholder="https://mte.usk.ac.id/wp-content/uploads/..." oninput="previewPhoto()">
+                <div class="photo-preview" id="photoPreview" style="display:none"></div>
+            </div>
+
+            <div class="form-group">
+                <label>Kategori</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-label"><input type="checkbox" value="professor"> <span>Profesor</span></label>
+                    <label class="checkbox-label"><input type="checkbox" value="doctor"> <span>Doktor</span></label>
+                    <label class="checkbox-label"><input type="checkbox" value="engineering"> <span>Elektro</span></label>
+                    <label class="checkbox-label"><input type="checkbox" value="computer"> <span>Komputer</span></label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Bidang Riset</label>
+                <textarea id="fResearch" placeholder="Satu bidang per baris&#10;Machine Learning&#10;Deep Learning&#10;Image Processing"></textarea>
+                <div class="form-hint">Tulis satu bidang per baris.</div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-outline" onclick="closeModal()">Batal</button>
+            <button class="btn btn-primary" onclick="saveEntry()">Simpan</button>
+        </div>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="editor-dosen.js"></script>
+</body>
+</html>
