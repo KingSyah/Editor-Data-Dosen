@@ -246,11 +246,33 @@ td.title-cell { white-space: nowrap; }
 
 td.actions-cell {
     white-space: nowrap;
-    width: 140px;
+    width: 150px;
 }
 
 td.actions-cell .btn-sm {
-    padding: 5px 8px;
+    padding: 5px 9px;
+}
+
+td.actions-cell .btn-outline {
+    color: var(--muted);
+    border-color: var(--border);
+    background: #fff;
+}
+
+td.actions-cell .btn-outline:hover {
+    background: #f1f5f9;
+    color: var(--text);
+    border-color: #cbd5e1;
+}
+
+td.actions-cell .btn-danger {
+    color: var(--danger);
+    background: #fff;
+    border: 1px solid #fecaca;
+}
+
+td.actions-cell .btn-danger:hover {
+    background: #fef2f2;
 }
 
 /* ─── Modal ─── */
