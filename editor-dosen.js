@@ -1,6 +1,10 @@
 let DATA = [];
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Copyright year
+    const el = document.getElementById('copyright-text');
+    if (el) el.textContent = `© ${new Date().getFullYear()} KingSyah`;
+
     const dz = document.getElementById('dropZone');
     const fi = document.getElementById('fileInput');
 
