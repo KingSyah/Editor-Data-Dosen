@@ -75,6 +75,8 @@ function renderTable() {
             <td>${cats}</td>
             <td><ul class="research-list">${research}</ul></td>
             <td class="actions-cell">
+                <button class="btn btn-sm btn-outline" onclick="moveEntry(${i}, -1)" title="Naik" ${i === 0 ? 'disabled style="opacity:0.3;cursor:default"' : ''}>↑</button>
+                <button class="btn btn-sm btn-outline" onclick="moveEntry(${i}, 1)" title="Turun" ${i === DATA.length - 1 ? 'disabled style="opacity:0.3;cursor:default"' : ''}>↓</button>
                 <button class="btn btn-sm btn-outline" onclick="editEntry(${i})">✏️</button>
                 <button class="btn btn-sm btn-danger" onclick="deleteEntry(${i})">🗑️</button>
             </td>
@@ -166,6 +168,14 @@ function saveEntry() {
 }
 
 function editEntry(i) { openModal(i); }
+
+function moveEntry(i, dir) {
+    const j = i + dir;
+    if (j < 0 || j >= DATA.length) return;
+    [DATA[i], DATA[j]] = [DATA[j], DATA[i]];
+    renderTable();
+    toast('Urutan diubah', 'success');
+}
 
 function deleteEntry(i) {
     if (!confirm(`Hapus data "${DATA[i].name}"?`)) return;
