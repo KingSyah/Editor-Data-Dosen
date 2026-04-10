@@ -420,3 +420,52 @@ td.actions-cell {
     table { min-width: 720px; }
     .modal { max-width: 100%; margin: 10px; }
 }
+
+/* ─── Footer ─── */
+.footer {
+    text-align: center;
+    padding: 24px 16px 16px;
+    margin-top: 20px;
+}
+
+.footer-inner {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 24px;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(8px);
+}
+
+.footer-crown {
+    font-size: 1rem;
+    animation: crownBob 2s ease-in-out infinite;
+    display: inline-block;
+}
+
+.footer-crown:last-child {
+    animation-delay: 0.3s;
+}
+
+.footer-text {
+    font-size: 0.78rem;
+    font-weight: 600;
+    background: linear-gradient(90deg, #818cf8, #06b6d4, #818cf8);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+}
+
+@keyframes crownBob {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-2px) rotate(5deg); }
+}
+
+@keyframes shimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
